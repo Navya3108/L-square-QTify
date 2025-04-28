@@ -1,24 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
-import SearchBar from "../SearchBar/Search";
-import "./Navbar.module.css";
-import ModelNew from "../Model/Model";
-
+import SearchBar from "../SearchBar/SearchBar";
+import styles from './Navbar.module.css';
 const NavBar = () => {
-  const [open, setOpen] = useState(false);
-  const handleClick = () => {
-    setOpen(true);
-  };
   return (
-    <>
-      <nav className="navbar">
-        <Logo />
-        <SearchBar />
-        <ModelNew val={open} className="button" onClick={handleClick} />
-        {/* <Button text="Give Feedback" type="button" onClick={handleClick} /> */}
-      </nav>
-    </>
+    <nav className={styles.navbar}>
+      <Logo />
+      <SearchBar />
+      <Button text="Give Feedback" />
+    </nav>
   );
 };
 
