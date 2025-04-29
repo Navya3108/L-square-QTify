@@ -1,17 +1,32 @@
+import { useEffect, useState } from "react";
+import "./App.module.css";
 import NavBar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
-import theme  from "./Theme";
-import {cssVariables} from "./Theme";
+
+import { fetchTopAlbums } from "./api/api";
+import Section from "./components/Section/Section";
 import "./App.module.css";
-import { ThemeProvider } from "@emotion/react";
+
 
 export default function App() {
+  const [topAlbumData, settopAlbumData] = useState([]);
+  const generateTopAlbumData = async () => {
+    const data = await fetchTopAlbums();
+    console.log(data);
+    settopAlbumData(data);
+  };
+  useEffect(() => {
+    generateTopAlbumData();
+  }, []);
   return (
-    <ThemeProvider theme={theme} style={cssVariables}>
+  
     <div className="App">
       <NavBar />
       <Hero />
+      <div className="sectionWrapper" >
+      <Section type="album" title="Top Albums" data={topAlbumData} />
+      </div>
     </div>
-    </ThemeProvider>
+   
   );
 }

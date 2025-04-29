@@ -1,0 +1,25 @@
+.sectionwrapper{
+    background-color: var(--black-color);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: Poppins;
+    color:var(--white-color);
+    }
+    .cardWrapper{
+        margin-top: 18px;
+       
+    }
+    .wrapper{
+        display: flex;
+        gap:30px;
+        flex-wrap: wrap;
+        
+    }
+    .toggleText{
+        cursor: pointer;
+        color:#34C94B;
+       
+    }
