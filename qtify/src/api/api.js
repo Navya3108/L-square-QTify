@@ -11,6 +11,16 @@ export const fetchTopAlbums = async () => {
   }
 };
 
+export const fetchTopSongs = async () => {
+  try {
+    const res = await axios.get(`${BACKEND_ENDPOINT}/songs`);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
 export const fetchNewAlbums = async () => {
   try {
     const res = await axios.get(`${BACKEND_ENDPOINT}/albums/new`);
@@ -20,11 +30,4 @@ export const fetchNewAlbums = async () => {
   }
 };
 
-export const fetchTopSongs = async () => {
-  try {
-    const res = await axios.get(`${BACKEND_ENDPOINT}/songs`);
-    return res.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
+

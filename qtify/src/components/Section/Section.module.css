@@ -1,25 +1,24 @@
-.sectionwrapper{
-    background-color: var(--black-color);
-}
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-family: Poppins;
-    color:var(--white-color);
-    }
-    .cardWrapper{
-        margin-top: 18px;
-       
-    }
-    .wrapper{
-        display: flex;
-        gap:30px;
-        flex-wrap: wrap;
-        
-    }
-    .toggleText{
-        cursor: pointer;
-        color:#34C94B;
-       
-    }
+    color: white;
+  }
+  
+  .toggleText {
+    cursor: pointer;
+    color: green;
+  }
+  .wrapper {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .main {
+    margin-bottom: 25px;
+  }
+  .sectionwrapper{
+    background-color: var(--black-color);
+    
+  }

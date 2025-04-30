@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import "./App.module.css";
 import NavBar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
-
-import { fetchTopAlbums,fetchNewAlbums} from "./api/api";
+import { fetchTopAlbums,fetchNewAlbums,fetchTopSongs} from "./api/api";
 import Section from "./components/Section/Section";
-import "./App.module.css";
+import Tabs from "./components/Tabs/Tabs";
+import Faqs from "./components/Faqs/Faqs";
+import styles from "./App.module.css";
 
 
 export default function App() {
   const [topAlbumData, settopAlbumData] = useState([]);
   const [newAlbumData,setnewAlbumData]=useState([]);
+  const [TopSongsData,setTopsongsData]=useState([]);
   const generateTopAlbumData = async () => {
     const data = await fetchTopAlbums();
     console.log(data);
@@ -21,9 +23,15 @@ export default function App() {
     console.log(data);
     setnewAlbumData(data);
   };
+  const generateTopSongsData=async () => {
+    const data = await fetchTopSongs();
+    console.log(data);
+    setTopsongsData(data);
+  };
   useEffect(() => {
     generateTopAlbumData();
     generateNewAlbumData();
+    generateTopSongsData();
   }, []);
   return (
   
@@ -32,9 +40,14 @@ export default function App() {
       <Hero />
       <div className="sectionWrapper" >
       <Section type="album" title="Top Albums" data={topAlbumData} />
+      <Section type="album" title="New Albums" data={newAlbumData} />
+      <Tabs>
+          <Section data={TopSongsData} title="songs" type="songs" />
+        </Tabs>
       </div>
-      <div className="sectionWrapper" >
-      <Section type="album" title="New Albums" data={topAlbumData} />
+      <h1 className={styles.heading}>FAQs</h1>
+      <div className={styles.faqs}>
+        <Faqs />
       </div>
     </div>
    
