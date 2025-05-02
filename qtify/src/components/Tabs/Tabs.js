@@ -28,6 +28,7 @@ export default function Tabs() {
     try {
       const res = await fetchTopAlbums();
       setData(res);
+      console.log(res,"data in tabs");
     } catch (err) {
       console.log(err);
     }
@@ -36,6 +37,7 @@ export default function Tabs() {
     try {
       const res = await fetchTopSongs();
       setFilterData(res);
+      console.log(res);
     } catch (err) {}
   };
 
@@ -58,6 +60,8 @@ export default function Tabs() {
             <Tab label="All" value="1" />
             <Tab label="Pop" value="2" />
             <Tab label="Jazz" value="3" />
+            <Tab label="Rock" value="4"/>
+            <Tab label="Blues" value="5"/>
           </TabList>
         </Box>
         <TabPanel value="1">
@@ -85,7 +89,26 @@ export default function Tabs() {
               })}
           </div>
         </TabPanel>
+        <TabPanel value="4">
+        <div style={wrapperStyle}>
+            {filterData
+              .filter((item) => item.genre.label === "Rock")
+              .map((dat) => {
+                return <Card data={dat} type="Jaz" />;
+              })}
+          </div>
+        </TabPanel>
+        <TabPanel value="5">
+        <div style={wrapperStyle}>
+            {filterData
+              .filter((item) => item.genre.label === "Blues")
+              .map((dat) => {
+                return <Card data={dat} type="Jaz" />;
+              })}
+          </div>
+        </TabPanel>
       </TabContext>
     </Box>
   );
 }
+
