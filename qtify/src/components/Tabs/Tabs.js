@@ -1,22 +1,26 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-
-import styles from "../../components/Section/Section.module.css";
+import { useState, useEffect } from "react";
 import { fetchTopAlbums, fetchTopSongs } from "../../api/api";
+
 import Card from "../Card/Card";
 
-export default function Tabs() {
-    console.log("Component mounted");
-    console.log(styles);
-  const [value, setValue] = React.useState("1");
 
+export default function Tabs() {
+  const [value, setValue] = React.useState("1");
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  
+  const wrapperStyle = {
+    display: "flex",
+    gap: "40px",
+    flexWrap: "wrap",
+    marginBottom: "10px",
   };
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
@@ -36,51 +40,48 @@ export default function Tabs() {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      await generateData();
-      await generateData1();
-    }
-    fetchData();
+    generateData();
+    generateData1();
   }, []);
 
   return (
-    <Box sx={{ width: "100%", typography: "body1", color: "white" }}>
+    <Box sx={{ width: "100%", typography: "body1", color: "white", backgroundColor:"black" }}>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider",backgroundColor: "black" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList
             onChange={handleChange}
             aria-label="lab API tabs example"
             textColor="white"
             indicatorColor="secondary"
-
+            backgroundColor="secondary"
           >
             <Tab label="All" value="1" />
             <Tab label="Pop" value="2" />
             <Tab label="Jazz" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1" style={{ backgroundColor: "black" }}>
-          <div className={styles.wrapper}>
+        <TabPanel value="1">
+          <div style={wrapperStyle}>
             {data.map((item) => {
               return <Card data={item} key={Math.random()} />;
             })}
           </div>
         </TabPanel>
-        <TabPanel value="2" style={{ backgroundColor: "black" }}>
-          <div className={styles.wrapper}>
+        <TabPanel value="2">
+        <div style={wrapperStyle}>
             {filterData
               .filter((item) => item.genre.label === "Pop")
               .map((dat) => {
-                return <Card data={data} type="Pop" />;
+                return <Card data={dat} type="Jaz" />;
               })}
           </div>
         </TabPanel>
-        <TabPanel value="3" style={{ backgroundColor: "black" }}>
-          <div className={styles.wrapper}>
+        <TabPanel value="3">
+        <div style={wrapperStyle}>
             {filterData
               .filter((item) => item.genre.label === "Jazz")
               .map((dat) => {
-                return <Card data={data} type="Jazz" />;
+                return <Card data={dat} type="Jaz" />;
               })}
           </div>
         </TabPanel>

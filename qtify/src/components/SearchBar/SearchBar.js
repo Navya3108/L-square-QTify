@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
 import styles from "./SearchBar.module.css";
-import "../helpers.js"
+
 
 const SearchBar = () => {
   return (

@@ -9,3 +9,12 @@
   overflow-x: hidden;
   gap:30px;
 }
+
+.button {
+  background-color: var(--black-color);
+  color: var(--primary-color);
+  border-radius: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family:"Poppins";
+}

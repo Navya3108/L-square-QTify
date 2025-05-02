@@ -30,4 +30,11 @@ export const fetchNewAlbums = async () => {
   }
 };
 
-
+export const fetchGenres = async () => {
+  try {
+    const res = await axios.get(`${BACKEND_ENDPOINT}/genres`);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -1,5 +1,5 @@
 import React,{useState}from "react";
-import Button from "../Button/Button";
+
 import Logo from "../Logo/Logo";
 import SearchBar from "../SearchBar/SearchBar";
 import ModelNew from "../Model/Model";
@@ -13,7 +13,7 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <Logo />
       <SearchBar />
-      <ModelNew val={open} className="button" onClick={handleClick} />
+      <ModelNew val={open} className={styles.button} onClick={handleClick} />
     </nav>
   );
 };

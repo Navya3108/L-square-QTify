@@ -1,40 +1,54 @@
 import React from "react";
-import Styles from "./Card.module.css";
-import { Chip, Tooltip } from "@mui/material";
+import styles from "./Card.module.css";
+// import { useEffect, useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
+import Chip from "@mui/material/Chip";
 
-const Card = ({ data, type }) => {
+function Card(data) {
+  const type = data.type;
   const getCard = (type) => {
-    switch (type) {
-      case "album": {
-        const { image, follows, title, songs } = data;
-        console.log(songs,"songs")
-
-        return (
-          <Tooltip title={`${songs.length} songs`} placement="top" arrow >
-            <div className={Styles.wrapper}>
-              <div className={Styles.card}>
-                <img src={image} alt="album"/>
-                <div className={Styles.banner}>
+    const { image, follows, title, songs } = data.data;
+    return (
+      <>
+        {type !== "Jaz" && (
+          <Tooltip title={`${songs.length}songs`} placement="top" arrow>
+            <div className={styles.wrapper}>
+              <div className={styles.card}>
+                <img src={image} alt="ima" />
+                <div className={styles.banner}>
                   <Chip
-                    className={Styles.chip}
-                    label={`${follows} Follows`}
-                    Follows
+                    label={`${follows} follows`}
                     size="small"
-                  />
+                    className={styles.chip}
+                  ></Chip>
                 </div>
-              </div>
-              <div className={Styles.titleWrapper}>
-                <p>{title}</p>
+                <div className={styles.titleWrapper}>
+                  <p className={styles.para}>{title}</p>
+                </div>
               </div>
             </div>
           </Tooltip>
-        );
-      }
-      default:
-        return <></>;
-    }
+        )}
+        {type === "Jaz" && (
+          <div className={styles.wrapper}>
+            <div className={styles.card}>
+              <img src={image} alt="ima" />
+              <div className={styles.banner}>
+                <Chip
+                  label={`follows`}
+                  size="small"
+                  className={styles.chip}
+                ></Chip>
+              </div>
+              <div className={styles.titleWrapper}>
+                <p className={styles.para}>{title}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    );
   };
   return getCard(type);
-};
-
+}
 export default Card;

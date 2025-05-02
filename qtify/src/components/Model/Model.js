@@ -19,6 +19,7 @@ const style = {
   p: 4
 };
 
+
 export default function ModalNew(val) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -26,7 +27,7 @@ export default function ModalNew(val) {
 
   return (
     <div>
-      <Button onClick={handleOpen} className="button">
+      <Button onClick={handleOpen} className="button" sx={{backgroundColor:"black"}}>
         Give Feedback
       </Button>
       <Modal
